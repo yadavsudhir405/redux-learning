@@ -1,14 +1,12 @@
-import {count} from "./source/main/counter";
+import {count} from "./component/counter";
 import {createStore} from "redux";
-import {action} from "./source/main/action";
+import {action} from "./common/action";
 import React from "react";
 import ReactDOM from "react-dom";
+import {Counter} from "./component/counter/counter";
 
 const store = createStore(count);
 
-const Counter = ({value})=> {
-   return <h1>{value}</h1>
-};
 
 const render = ()=> {
   ReactDOM.render(<Counter value={store.getState()} />, document.getElementById("root"));

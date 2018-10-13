@@ -3,9 +3,9 @@ const path =  require("path");
 const HtmlWebpackPlugin =  require("html-webpack-plugin");
 const configs = {
     mode: "development",
-    devtool: 'inline-source-map',
+    devtool: 'inline-app-map',
     entry: {
-        index: "./index.js"
+        index: "./app/index.js"
     },
     output: {
         path: path.resolve(__dirname, "dist"),
@@ -27,7 +27,7 @@ const configs = {
     plugins: [
         new HtmlWebpackPlugin({
             minify: false,
-            template: path.join(__dirname, 'index.html'),
+            template: path.join(__dirname, 'app/index.html'),
             inject: 'body',
             hash: false
         })

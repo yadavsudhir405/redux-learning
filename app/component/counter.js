@@ -1,4 +1,4 @@
-import {action as Action} from "./action";
+import {action as Action} from "../common/action";
 export const count = (state=0, action) =>{
     switch (action.type) {
         case Action.INCREMENT :
