@@ -1,4 +1,4 @@
-import assert from "assert";
+import expect from "expect";
 import {Demo} from "../main/demo";
 
 describe("test Demo", ()=>{
@@ -8,7 +8,6 @@ describe("test Demo", ()=>{
     });
 
     it("should return the default greeting message", ()=>{
-        assert.equal(demo.greeting(), "Hello World");
-        console.log(demo.greeting())
+        expect(demo.greeting()).toBe("Hello World");
    })
 });
