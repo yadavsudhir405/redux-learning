@@ -6,12 +6,15 @@ import ReactDOM from "react-dom";
 
 const store = createStore(count);
 
-const Counter = ()=> {
-  return <h1>React App</h1>
+const Counter = ({value})=> {
+   return <h1>{value}</h1>
 };
 
 const render = ()=> {
-  ReactDOM.render(<Counter />, document.getElementById("root"));
+  ReactDOM.render(<Counter value={store.getState()} />, document.getElementById("root"));
 };
 store.subscribe(render);
 render();
+document.addEventListener("click",()=>{
+    store.dispatch({type:action.INCREMENT})
+});
