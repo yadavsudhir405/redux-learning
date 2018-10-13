@@ -8,8 +8,15 @@ describe("counter test", () => {
     beforeEach(() => {
         store = createStore(count);
     });
-    it(("increment and decrement  should change the state correctly"), ()=> {
-      expect(store.getState()).toEqual(0);
+    it(("increment and decrement  should change the state correctly"), () => {
+        expect(store.getState()).toEqual(0);
+
+        store.dispatch({type: action.INCREMENT});
+
+        expect(store.getState()).toEqual(1);
+        store.dispatch({type: action.INCREMENT});
+
+        expect(store.getState()).toEqual(2);
 
     })
 });
