@@ -1,4 +1,4 @@
-import {count} from "./component/counter";
+import {count} from "./reducer/counter";
 import {createStore} from "redux";
 import {action} from "./common/action";
 import React from "react";
