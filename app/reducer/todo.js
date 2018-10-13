@@ -1,23 +1,36 @@
 import {action as Action} from "../common/action";
 
-export const todos = (state=[], action)=> {
-    switch (action.type){
+export const todos = (state = [], action) => {
+    switch (action.type) {
         case Action.ADD_TODO :
             return [...state,
-                {id: action.id, text: action.text, completed: false}
-                ];
+                todo(state, action)
+            ];
         case Action.TOGGLE_TODO :
-            return state.map(todo =>{
-                if(todo.id !== action.id){
-                    return todo;
-                }
-                //return Object.assign({},todo,{completed: !todo.completed})  either  this syntax or below one
-                return {
-                    ...todo,
-                    completed: !todo.completed
-                }
-            });
+            return state.map(eachState =>
+                todo(eachState, action)
+            );
         default:
             return state;
     }
+};
+
+const todo = (state, action) => {
+    switch (action.type) {
+        case Action.ADD_TODO:
+            return {
+                id: action.id,
+                text: action.text,
+                completed: false
+            };
+        case Action.TOGGLE_TODO:
+            if(state.id !== action.id){
+                return state
+            }else{
+                return {...state, completed:!state.completed}
+            }
+        default:
+            return state;
+    }
+
 };
