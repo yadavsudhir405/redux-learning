@@ -1,5 +1,6 @@
 export const action= {
     INCREMENT: "INCREMENT",
     DECREMENT: "DECREMENT",
-    ADD_TODO: "ADD_TODO"
+    ADD_TODO: "ADD_TODO",
+    TOGGLE_TODO: "TOGGLE_TODO"
 };
