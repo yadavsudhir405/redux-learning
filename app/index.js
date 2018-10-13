@@ -9,10 +9,9 @@ const store = createStore(count);
 
 
 const render = ()=> {
-  ReactDOM.render(<Counter value={store.getState()} />, document.getElementById("root"));
+  ReactDOM.render(<Counter value={store.getState()}
+                           increment={()=>{store.dispatch({type: action.INCREMENT})}}
+                           decrement={()=>{store.dispatch({type:action.DECREMENT})}}/>, document.getElementById("root"));
 };
 store.subscribe(render);
 render();
-document.addEventListener("click",()=>{
-    store.dispatch({type:action.INCREMENT})
-});
