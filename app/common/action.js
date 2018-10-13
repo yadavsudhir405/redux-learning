@@ -1,4 +1,5 @@
 export const action= {
     INCREMENT: "INCREMENT",
-    DECREMENT: "DECREMENT"
+    DECREMENT: "DECREMENT",
+    ADD_TODO: "ADD_TODO"
 };
