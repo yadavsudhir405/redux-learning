@@ -14,11 +14,12 @@ const configs = {
     module: {
         rules: [
             {
-                test: /\*.js$/,
+                test: /\.js$/,
+                exclude: "/node_modules/",
                 use:[
                     {
                         loader: "babel-loader"
-                    }
+                    },
                 ]
             }
         ]
