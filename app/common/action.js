@@ -3,9 +3,5 @@ export const action= {
     DECREMENT: "DECREMENT",
     ADD_TODO: "ADD_TODO",
     TOGGLE_TODO: "TOGGLE_TODO",
-    visibilityFilter: {
-        SHOW_ALL: 'SHOW_ALL',
-        SHOW_COMPLETED: 'SHOW_COMPLETED',
-        SHOW_ACTIVE: 'SHOW_ACTIVE'
-    }
+    SET_VISIBILITY_FILTER: "SET_VISIBILITY_FILTER"
 };
