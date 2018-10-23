@@ -9,6 +9,6 @@ describe("test visibility filter reducer ", ()=> {
             .toEqual("SHOW_ALL");
         expect(visibilityFilter({filter:"SHOW_ACTIVE"},{type: Action.SET_VISIBILITY_FILTER, filter: VisibilityFilter.SHOW_ALL}))
             .toEqual("SHOW_ALL");
-        
+
     })
 });
