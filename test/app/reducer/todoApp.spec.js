@@ -27,4 +27,18 @@ describe("test the todoApp reducer",()=>{
             visibilityAction:{type: Action.SET_VISIBILITY_FILTER, filter: VisibilityFilterConstant.SHOW_ACTIVE}};
         expect(todoApp(todoAppState, todoAppAction)).toEqual(expectedAppState);
     });
+
+    it("should be able to add the new todo into the list", ()=>{
+        let todoAppState = {
+            todo: [{id:1,text:"Learn Redux", completed:false}],
+            visibilityFilter:"SHOW_ACTIVE"
+        };
+
+        let expectedAppState = {todo:[{id:1, text:"Learn Redux", completed:false},
+                {id:2, text:"Learn React",completed: false}],
+            visibilityFilter:"SHOW_ACTIVE"};
+        let todoAppAction = {todoAction:{type:Action.ADD_TODO, id: 2, text:"Learn React",completed:false},
+            visibilityAction:{type: Action.SET_VISIBILITY_FILTER, filter: VisibilityFilterConstant.SHOW_ACTIVE}};
+        expect(todoApp(todoAppState, todoAppAction)).toEqual(expectedAppState);
+    });
 });
