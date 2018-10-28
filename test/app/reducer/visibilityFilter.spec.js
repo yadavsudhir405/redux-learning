@@ -5,9 +5,9 @@ import expect from "expect";
 
 describe("test visibility filter reducer ", ()=> {
     it("should return the state correctly", ()=> {
-        expect(visibilityFilter({filter: "SHOW_ALL"}, {type:"DummyType", filter: VisibilityFilter.SHOW_ACTIVE}))
+        expect(visibilityFilter(undefined ,{type:"DummyType", filter: VisibilityFilter.SHOW_ACTIVE}))
             .toEqual("SHOW_ALL");
-        expect(visibilityFilter({filter:"SHOW_ACTIVE"},{type: Action.SET_VISIBILITY_FILTER, filter: VisibilityFilter.SHOW_ALL}))
+        expect(visibilityFilter(undefined,{type: Action.SET_VISIBILITY_FILTER, filter:VisibilityFilter.SHOW_ALL}))
             .toEqual("SHOW_ALL");
 
     })
