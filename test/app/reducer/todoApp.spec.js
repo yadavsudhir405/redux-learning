@@ -31,7 +31,7 @@ describe("test the todoApp reducer",()=>{
             type:"ADD_TODO",
             id:1,
             text: "Learn React",
-            completed: true
+            completed: false
         };
         store.dispatch(toDoAction1);
         let expectedValue1 = {"todo":[
@@ -43,7 +43,7 @@ describe("test the todoApp reducer",()=>{
             {
                 id:1,
                 text:"Learn React",
-                completed: true
+                completed: false
             }
         ],
         visibilityFilter: "SHOW_ALL"};
