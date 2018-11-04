@@ -1,17 +1,19 @@
-import {count} from "./reducer/counter";
 import {createStore} from "redux";
-import {action} from "./common/action";
 import React from "react";
 import ReactDOM from "react-dom";
-import {Counter} from "./component/counter/counter";
+import {TodoApp} from "./component/todo/todoApp";
+import {todoApp} from "./reducer/todoApp";
 
-const store = createStore(count);
+const store = createStore(todoApp);
 
 
-const render = ()=> {
-  ReactDOM.render(<Counter value={store.getState()}
-                           increment={()=>{store.dispatch({type: action.INCREMENT})}}
-                           decrement={()=>{store.dispatch({type:action.DECREMENT})}}/>, document.getElementById("root"));
+const render = ()=>{
+  ReactDOM.render(
+      <TodoApp todos={store.getState().todo}/>, document.getElementById("root")
+  );
 };
+
 store.subscribe(render);
 render();
+
+export {store}
