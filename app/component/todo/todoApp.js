@@ -6,19 +6,20 @@ let nextTodoId = 0;
 export class TodoApp extends React.Component {
     constructor() {
         super();
+        this.textInput = React.createRef();
     }
 
     render() {
         return <div>
-            <input ref={node =>{this.input = node}}/>
+            <input ref={this.textInput}/>
             <button onClick={() => {
                 store.dispatch({
                     type: "ADD_TODO",
-                    text: this.input.value,
+                    text: this.textInput.current.value,
                     id: nextTodoId++,
                     completed: false
                 });
-                this.input.value = "";
+                this.textInput.current.value = "";
             }}>Add Todo
             </button>
             <ul>
