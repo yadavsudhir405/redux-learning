@@ -7,6 +7,7 @@ export class TodoApp extends React.Component {
     constructor() {
         super();
         this.textInput = React.createRef();
+        this.focusTextField = this.focusTextField.bind(this);
     }
 
     render() {
@@ -22,6 +23,7 @@ export class TodoApp extends React.Component {
                 this.textInput.current.value = "";
             }}>Add Todo
             </button>
+            <input type="button" onClick={this.focusTextField()} value="Focus the text field"/>
             <ul>
                 {this.props.todos.map(todo =>
                     <li key={todo.id}>
@@ -29,5 +31,9 @@ export class TodoApp extends React.Component {
                     </li>)}
             </ul>
         </div>
+    }
+    focusTextField(){
+        console.log("Focusing the text field");
+        this.textInput.current.focus();
     }
 }
