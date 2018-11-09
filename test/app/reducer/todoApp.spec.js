@@ -8,7 +8,7 @@ describe("test the todoApp reducer",()=>{
        store = createStore(todoApp);
     });
     it("test the reducer function", ()=>{
-       expect(store.getState()).toEqual({"todo":[],"visibilityFilter":"SHOW_ALL"});
+       expect(store.getState()).toEqual({"todos":[],"visibilityFilter":"SHOW_ALL"});
     });
     it('should update the state',()=>{
         let toDoAction = {
@@ -18,7 +18,7 @@ describe("test the todoApp reducer",()=>{
             completed: false
         };
         let expectedValue = {
-          "todo":[{
+          "todos":[{
               id:0,
               text:"Learn Redux",
               completed: false
@@ -34,7 +34,7 @@ describe("test the todoApp reducer",()=>{
             completed: false
         };
         store.dispatch(toDoAction1);
-        let expectedValue1 = {"todo":[
+        let expectedValue1 = {"todos":[
             {
                 id:0,
                 text:"Learn Redux",

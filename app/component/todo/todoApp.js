@@ -8,6 +8,7 @@ export class TodoApp extends React.Component {
         super();
         this.textInput = React.createRef();
         this.focusTextField = this.focusTextField.bind(this);
+        this.removeTodo = this.removeTodo.bind(this);
     }
 
     render() {
@@ -24,6 +25,7 @@ export class TodoApp extends React.Component {
             }}>Add Todo
             </button>
             <input type="button" onClick={this.focusTextField} value="Focus the text field"/>
+            <input type="button" onClick={this.removeTodo} value="Remove the TODO"/>
             <ul>
                 {this.props.todos.map(todo =>
                     <li key={todo.id} onClick={()=>{toggleTodo(todo.id)}} style={{textDecoration: todo.completed? 'line-through': 'none'}}>
@@ -34,6 +36,9 @@ export class TodoApp extends React.Component {
     }
     focusTextField(){
         this.textInput.current.focus();
+    }
+    removeTodo(){
+        store.dispatch({type:"REMOVE_TODO"});
     }
 
 }

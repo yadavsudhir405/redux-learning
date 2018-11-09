@@ -10,6 +10,8 @@ export const todos = (state = [], action) => {
             return state.map(eachState =>
                 todo(eachState, action)
             );
+        case Action.REMOVE_TODO:
+            return state.slice(1);
         default:
             return state;
     }
