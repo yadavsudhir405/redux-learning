@@ -35,9 +35,9 @@ export class TodoApp extends React.Component {
             </ul>
             <p>
                 Show:
-                <FilterLink filter="SHOW_ALL" currentVisibility={store.getState().visibilityFilter}/>
-                <FilterLink filter="SHOW_ACTIVE" currentVisibility={store.getState().visibilityFilter}/>
-                <FilterLink filter="SHOW_COMPLETED" currentVisibility={store.getState().visibilityFilter}/>
+                <FilterLink filter="SHOW_ALL" currentVisibility={store.getState().visibilityFilter} displayFilterName="All"/>,
+                <FilterLink filter="SHOW_ACTIVE" currentVisibility={store.getState().visibilityFilter} displayFilterName="Active"/>, 
+                <FilterLink filter="SHOW_COMPLETED" currentVisibility={store.getState().visibilityFilter} displayFilterName="Completed"/>
             </p>
         </div>
     }
