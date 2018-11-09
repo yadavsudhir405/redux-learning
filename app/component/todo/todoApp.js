@@ -1,5 +1,6 @@
 import React from "react";
 import {store} from "../../appState";
+import {FilterLink} from "../filterLink/filterLink";
 
 let nextTodoId = 0;
 
@@ -27,11 +28,17 @@ export class TodoApp extends React.Component {
             <input type="button" onClick={this.focusTextField} value="Focus the text field"/>
             <input type="button" onClick={this.removeTodo} value="Remove the TODO"/>
             <ul>
-                {this.props.todos.map(todo =>
+                {getVisibleTodos(store.getState().todos,store.getState().visibilityFilter).map(todo =>
                     <li key={todo.id} onClick={()=>{toggleTodo(todo.id)}} style={{textDecoration: todo.completed? 'line-through': 'none'}}>
                         {todo.text}
                     </li>)}
             </ul>
+            <p>
+                Show:
+                <FilterLink filter="SHOW_ALL" currentVisibility={store.getState().visibilityFilter}/>
+                <FilterLink filter="SHOW_ACTIVE" currentVisibility={store.getState().visibilityFilter}/>
+                <FilterLink filter="SHOW_COMPLETED" currentVisibility={store.getState().visibilityFilter}/>
+            </p>
         </div>
     }
     focusTextField(){
@@ -44,4 +51,15 @@ export class TodoApp extends React.Component {
 }
 function toggleTodo(id){
     store.dispatch({type:"TOGGLE_TODO", id: id})
+}
+
+function getVisibleTodos(todos, filter) {
+    switch (filter){
+        case "SHOW_ALL":
+            return todos;
+        case "SHOW_ACTIVE":
+            return todos.filter(todo=> !todo.completed);
+        case "SHOW_COMPLETED":
+            return todos.filter(todo=> todo.completed);
+    }
 }
