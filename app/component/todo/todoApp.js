@@ -8,6 +8,7 @@ export class TodoApp extends React.Component {
         super();
         this.textInput = React.createRef();
         this.focusTextField = this.focusTextField.bind(this);
+        // this.toggleTodo = this.toggleTodo.bind(this);
     }
 
     render() {
@@ -23,17 +24,20 @@ export class TodoApp extends React.Component {
                 this.textInput.current.value = "";
             }}>Add Todo
             </button>
-            <input type="button" onClick={this.focusTextField()} value="Focus the text field"/>
+            <input type="button" onClick={this.focusTextField} value="Focus the text field"/>
             <ul>
                 {this.props.todos.map(todo =>
-                    <li key={todo.id}>
+                    <li key={todo.id} onClick={()=>{store.dispatch({type:"TOGGLE_TODO", id: todo.id})}} style={{textDecoration: todo.completed? 'line-through': 'none'}}>
                         {todo.text}
                     </li>)}
             </ul>
         </div>
     }
     focusTextField(){
-        console.log("Focusing the text field");
         this.textInput.current.focus();
+    }
+    toggleTodo(id){
+        console.log("Toggle To do");
+        store.dispatch({type:"TOGGLE_TODO", id: id})
     }
 }
