@@ -27,16 +27,15 @@ export class TodoApp extends React.Component {
             </button>
             <input type="button" onClick={this.focusTextField} value="Focus the text field"/>
             <input type="button" onClick={this.removeTodo} value="Remove the TODO"/>
-            <ul>
-                {getVisibleTodos(store.getState().todos,store.getState().visibilityFilter).map(todo =>
-                    <li key={todo.id} onClick={()=>{toggleTodo(todo.id)}} style={{textDecoration: todo.completed? 'line-through': 'none'}}>
-                        {todo.text}
-                    </li>)}
-            </ul>
+            <TodoList todos={getVisibleTodos(store.getState().todos,store.getState().visibilityFilter)}
+                onTodoClick={id=>
+                store.dispatch({type: 'TOGGLE_TODO', id})
+                }
+            />
             <p>
                 Show:
                 <FilterLink filter="SHOW_ALL" currentVisibility={store.getState().visibilityFilter} displayFilterName="All"/>,
-                <FilterLink filter="SHOW_ACTIVE" currentVisibility={store.getState().visibilityFilter} displayFilterName="Active"/>, 
+                <FilterLink filter="SHOW_ACTIVE" currentVisibility={store.getState().visibilityFilter} displayFilterName="Active"/>,
                 <FilterLink filter="SHOW_COMPLETED" currentVisibility={store.getState().visibilityFilter} displayFilterName="Completed"/>
             </p>
         </div>
@@ -63,3 +62,24 @@ function getVisibleTodos(todos, filter) {
             return todos.filter(todo=> todo.completed);
     }
 }
+
+const Todo = ({
+                text,
+                completed,
+                onClick
+              })=> (
+    <li
+        onClick={onClick}
+        style={{textDecoration: completed? 'line-through': 'none'}}>
+        {text}
+    </li>
+);
+
+const TodoList = ({
+                    todos,
+                    onTodoClick
+                  })=>(
+                      <ul>
+                          {todos.map(todo => <Todo key={todo.id} {...todo} onClick={()=> onTodoClick(todo.id)}/>)}
+                      </ul>
+);
