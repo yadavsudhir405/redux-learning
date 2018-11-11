@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {TodoApp} from "./component/todo/todoApp";
+import {TodoApp} from "./component/todoApp/todoApp";
 import {store} from "./appState";
 
 

@@ -1,6 +1,7 @@
 import React from "react";
 import {store} from "../../appState";
 import {FilterLink} from "../filterLink/filterLink";
+import {TodoList} from "../todoList/todoList";
 
 let nextTodoId = 0;
 
@@ -28,8 +29,8 @@ export class TodoApp extends React.Component {
             <input type="button" onClick={this.focusTextField} value="Focus the text field"/>
             <input type="button" onClick={this.removeTodo} value="Remove the TODO"/>
             <TodoList todos={getVisibleTodos(store.getState().todos,store.getState().visibilityFilter)}
-                onTodoClick={id=>
-                store.dispatch({type: 'TOGGLE_TODO', id})
+                      onTodoClick={id=>
+                    store.dispatch({type: 'TOGGLE_TODO', id})
                 }
             />
             <p>
@@ -62,24 +63,3 @@ function getVisibleTodos(todos, filter) {
             return todos.filter(todo=> todo.completed);
     }
 }
-
-const Todo = ({
-                text,
-                completed,
-                onClick
-              })=> (
-    <li
-        onClick={onClick}
-        style={{textDecoration: completed? 'line-through': 'none'}}>
-        {text}
-    </li>
-);
-
-const TodoList = ({
-                    todos,
-                    onTodoClick
-                  })=>(
-                      <ul>
-                          {todos.map(todo => <Todo key={todo.id} {...todo} onClick={()=> onTodoClick(todo.id)}/>)}
-                      </ul>
-);
